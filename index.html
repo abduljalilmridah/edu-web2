@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>জ্ঞানসেতু - আধুনিক শিক্ষামূলক প্ল্যাটফর্ম</title>
+    <!-- গুগল ফন্ট ও ফন্ট অসম আইকন -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0f172a;
+            --accent: #10b981;
+            --danger: #ef4444;
+            --bg-light: #f8fafc;
+            --text-main: #334155;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* হেডার ও মেনুবার */
+        header {
+            background: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.07);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 600;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .admin-nav-btn {
+            background: var(--secondary);
+            color: white !important;
+            padding: 8px 18px;
+            border-radius: 6px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .admin-nav-btn:hover {
+            background: #000;
+        }
+
+        /* হিরো সেকশন */
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a, var(--primary));
+            color: white;
+            padding: 75px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 650px;
+            margin: auto;
+            opacity: 0.95;
+            margin-bottom: 25px;
+        }
+
+        .hero-btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn-hero {
+            background: white;
+            color: var(--primary);
+            padding: 12px 24px;
+            font-weight: 700;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .btn-hero:hover {
+            background: #e2e8f0;
+        }
+
+        .btn-hero-outline {
+            border: 2px solid white;
+            color: white;
+            padding: 12px 24px;
+            font-weight: 700;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .btn-hero-outline:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* সেকশন লেআউট */
+        .container {
+            max-width: 1150px;
+            margin: auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--secondary);
+        }
+
+        .section-title p {
+            color: #64748b;
+        }
+
+        /* কোর্স কার্ড */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+        }
+
+        .card-header-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .card h3 {
+            font-size: 1.35rem;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+
+        .card-price-badge {
+            display: inline-block;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #0d9488;
+            margin: 15px 0 10px 0;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-card-inquire {
+            flex: 1;
+            background: #eff6ff;
+            color: var(--primary);
+            border: 1.5px solid var(--primary);
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-card-inquire:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* যোগাযোগ সেকশন লেআউট */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 40px;
+            background: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, var(--secondary), #1e293b);
+            color: white;
+            padding: 35px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+        .info-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .info-item i {
+            font-size: 1.3rem;
+            color: var(--accent);
+        }
+
+        /* ফর্ম উপাদান */
+        .form-group {
+            margin-bottom: 18px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.98rem;
+            font-family: inherit;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        /* চিপ সিলেক্টর */
+        .chips-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .chip {
+            padding: 6px 14px;
+            background: #f1f5f9;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            transition: 0.2s;
+            user-select: none;
+        }
+
+        .chip.active, .chip:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .char-counter {
+            font-size: 0.8rem;
+            text-align: right;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 13px;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary-dark);
+        }
+
+        /* অ্যাডমিন মেসেজ তালিকা মডাল */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 850px;
+            max-height: 85vh;
+            border-radius: 14px;
+            padding: 25px;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #64748b;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            border: 1px solid var(--border);
+            padding: 10px 12px;
+            text-align: left;
+            font-size: 0.92rem;
+        }
+
+        th {
+            background: #f8fafc;
+        }
+
+        /* টোস্ট নোটিফিকেশন */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--secondary);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: none;
+            z-index: 2000;
+        }
+
+        footer {
+            background: var(--secondary);
+            color: #94a3b8;
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .contact-layout { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- হেডার -->
+    <header>
+        <nav class="navbar">
+            <div class="logo" onclick="goToSection('home')">
+                <i class="fa-solid fa-graduation-cap"></i> জ্ঞানসেতু
+            </div>
+            <ul class="nav-links">
+                <li><a onclick="goToSection('home')">হোম</a></li>
+                <li><a onclick="goToSection('courses')">কোর্সসমূহ</a></li>
+                <li><a onclick="goToSection('contact')">যোগাযোগ ফর্ম</a></li>
+                <li><a class="admin-nav-btn" onclick="openAdminModal()"><i class="fa-solid fa-inbox"></i> মেসেজ তালিকা</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- হিরো সেকশন -->
+    <section class="hero" id="home">
+        <h1>জ্ঞানের আলোয় গড়ুন নিজের ভবিষ্যৎ</h1>
+        <p>দেশসেরা মেন্টরদের সাথে স্কিল ডেভেলপমেন্ট কোর্সে যুক্ত হতে এবং বিস্তারিত জানতে আমাদের সাথে সরাসরি যোগাযোগ করুন।</p>
+        <div class="hero-btn-group">
+            <span class="btn-hero" onclick="goToSection('courses')"><i class="fa-solid fa-book-open"></i> কোর্সগুলো দেখুন</span>
+            <span class="btn-hero-outline" onclick="goToSection('contact')"><i class="fa-solid fa-headset"></i> তথ্য জানতে যোগাযোগ</span>
+        </div>
+    </section>
+
+    <!-- বিভিন্ন কোর্স ও দামের সেকশন -->
+    <section class="container" id="courses">
+        <div class="section-title">
+            <h2>আমাদের কোর্সসমূহ ও কোর্স ফি</h2>
+            <p>আপনার পছন্দের কোর্সের তথ্যের জন্য বাটনে ক্লিক করুন</p>
+        </div>
+        <div class="grid-3">
+            <!-- কোর্স ১ -->
+            <div class="card">
+                <div>
+                    <div class="card-header-icon"><i class="fa-solid fa-code"></i></div>
+                    <h3>ফুল-স্ট্যাক ওয়েব ডেভেলপমেন্ট</h3>
+                    <p>HTML, CSS, JavaScript, React, Node.js ও আধুনিক ডেটাবেজ নিয়ে সরাসরি লাইভ প্রজেক্ট ভিত্তিক কোর্স।</p>
+                </div>
+                <div>
+                    <div class="card-price-badge">কোর্স ফি: ৮,০০০৳</div>
+                    <div class="card-actions">
+                        <button class="btn-card-inquire" onclick="inquireCourse('ফুল-স্ট্যাক ওয়েব ডেভেলপমেন্ট (ফি: ৮,০০০৳)')">
+                            <i class="fa-solid fa-comment-dots"></i> এই কোর্স সম্পর্কে যোগাযোগ
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- কোর্স ২ -->
+            <div class="card">
+                <div>
+                    <div class="card-header-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                    <h3>গ্রাফিক ডিজাইন ও UI/UX</h3>
+                    <p>ফটোশপ, ইলাস্ট্রেটর ও ফিগমা ব্যবহার করে পেশাদার মানের ভিজ্যুয়াল ডিজাইন ও অ্যাপ ডিজাইন শিখুন।</p>
+                </div>
+                <div>
+                    <div class="card-price-badge">কোর্স ফি: ২,৫০০৳</div>
+                    <div class="card-actions">
+                        <button class="btn-card-inquire" onclick="inquireCourse('গ্রাফিক ডিজাইন ও UI/UX (ফি: ২,৫০০৳)')">
+                            <i class="fa-solid fa-comment-dots"></i> এই কোর্স সম্পর্কে যোগাযোগ
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- কোর্স ৩ -->
+            <div class="card">
+                <div>
+                    <div class="card-header-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                    <h3>ডিজিটাল মার্কেটিং মাস্টারক্লাস</h3>
+                    <p>এসইও, গুগল ও ফেসবুক বিজ্ঞাপনের স্ট্র্যাটেজি, সোশ্যাল মিডিয়া মার্কেটিং ও কন্টেন্ট প্ল্যানিং।</p>
+                </div>
+                <div>
+                    <div class="card-price-badge">কোর্স ফি: ২,০০০৳</div>
+                    <div class="card-actions">
+                        <button class="btn-card-inquire" onclick="inquireCourse('ডিজিটাল মার্কেটিং মাস্টারক্লাস (ফি: ২,০০০৳)')">
+                            <i class="fa-solid fa-comment-dots"></i> এই কোর্স সম্পর্কে যোগাযোগ
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- যোগাযোগ প্রাণ ও যোগাযোগ ফর্ম -->
+    <section class="container" id="contact">
+        <div class="section-title">
+            <h2>যোগাযোগ কেন্দ্র ও পরামর্শ ফর্ম</h2>
+            <p>ভর্তি সংক্রান্ত যেকোনো তথ্য বা জিজ্ঞাসার জন্য নিচের ফর্মটি পূরণ করে পাঠান</p>
+        </div>
+
+        <div class="contact-layout">
+            <!-- যোগাযোগের তথ্য বক্স -->
+            <div class="contact-info">
+                <div>
+                    <h3 style="font-size: 1.45rem; margin-bottom: 20px;"><i class="fa-solid fa-address-book"></i> সরাসরি যোগাযোগ</h3>
+                    
+                    <div class="info-item" onclick="showToast('ফোন নম্বর: +৮৮০ ১৭১১-০০০০০০')">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <p style="font-size: 0.85rem; opacity: 0.8;">হটলাইন নম্বর</p>
+                            <strong>+৮৮০ ১৭১১-০০০০০০</strong>
+                        </div>
+                    </div>
+
+                    <div class="info-item" onclick="showToast('ইমেইল: info@gyanshetu.edu.bd')">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            <p style="font-size: 0.85rem; opacity: 0.8;">অফিসিয়াল ইমেইল</p>
+                            <strong>info@gyanshetu.edu.bd</strong>
+                        </div>
+                    </div>
+
+                    <div class="info-item" onclick="showToast('ক্যাম্পাস: ধানমন্ডি, ঢাকা')">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <p style="font-size: 0.85rem; opacity: 0.8;">ক্যাম্পাস ঠিকানা</p>
+                            <strong>ধানমন্ডি, ঢাকা, বাংলাদেশ</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="font-size: 0.85rem; opacity: 0.75; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 15px;">
+                    <i class="fa-regular fa-clock"></i> সেবা সময়: সকাল ১০:০০ - রাত ৮:০০ (শনি থেকে বৃহস্পতি)
+                </div>
+            </div>
+
+            <!-- মূল যোগাযোগ ফর্ম -->
+            <form id="contactMainForm" onsubmit="handleContactSubmit(event)">
+                <div class="form-group">
+                    <label>আপনার পূর্ণ নাম *</label>
+                    <input type="text" id="cName" class="form-control" placeholder="আপনার নাম লিখুন" required>
+                </div>
+
+                <div class="form-group">
+                    <label>মোবাইল নম্বর *</label>
+                    <input type="tel" id="cPhone" class="form-control" placeholder="০১XXXXXXXXX" required>
+                </div>
+
+                <div class="form-group">
+                    <label>ইমেইল অ্যাড্রেস *</label>
+                    <input type="email" id="cEmail" class="form-control" placeholder="example@mail.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>কোন কোর্স বা বিষয়ে জানতে চান? *</label>
+                    <div class="chips-container">
+                        <span class="chip active" onclick="selectChip(this, 'ফুল-স্ট্যাক ওয়েব ডেভেলপমেন্ট (ফি: ৮,০০০৳)')">ফুল-স্ট্যাক ওয়েব</span>
+                        <span class="chip" onclick="selectChip(this, 'গ্রাফিক ডিজাইন ও UI/UX (ফি: ২,৫০০৳)')">গ্রাফিক ডিজাইন</span>
+                        <span class="chip" onclick="selectChip(this, 'ডিজিটাল মার্কেটিং মাস্টারক্লাস (ফি: ২,০০০৳)')">ডিজিটাল মার্কেটিং</span>
+                        <span class="chip" onclick="selectChip(this, 'সাধারণ জিজ্ঞাসা বা পরামর্শ')">সাধারণ জিজ্ঞাসা</span>
+                    </div>
+                    <input type="text" id="cSubject" class="form-control" value="ফুল-স্ট্যাক ওয়েব ডেভেলপমেন্ট (ফি: ৮,০০০৳)" required>
+                </div>
+
+                <div class="form-group">
+                    <label>আপনার বার্তা বা জিজ্ঞাসা লিখুন *</label>
+                    <textarea id="cMessage" class="form-control" rows="4" maxlength="300" placeholder="কোর্স সংক্রান্ত যেকোনো জিজ্ঞাসা বিস্তারিত লিখুন..." required oninput="updateCharCount()"></textarea>
+                    <div class="char-counter"><span id="charCount">০</span> / ৩০০ অক্ষর</div>
+                </div>
+
+                <button type="submit" id="submitBtn" class="btn-submit">
+                    <i class="fa-solid fa-paper-plane"></i> বার্তা পাঠান
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- এডমিন মেসেজ ভিউ মডাল -->
+    <div class="modal" id="adminModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeAdminModal()">&times;</span>
+            
+            <div id="adminLoginArea">
+                <h3 style="margin-bottom: 15px;"><i class="fa-solid fa-lock"></i> এডমিন ভিউ (লগইন)</h3>
+                <p style="margin-bottom: 15px; color: #64748b;">যোগাযোগ ফর্মের বার্তাগুলো দেখতে লগইন করুন।</p>
+                <div class="form-group">
+                    <label>পাসওয়ার্ড (ডিফল্ট: 123456)</label>
+                    <input type="password" id="adminPass" class="form-control" placeholder="123456">
+                </div>
+                <button class="btn-submit" onclick="loginAdmin()">প্রবেশ করুন</button>
+            </div>
+
+            <div id="adminDataArea" style="display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h3><i class="fa-solid fa-envelope-open-text"></i> প্রাপ্ত বার্তা তালিকা (<span id="msgCount">0</span>)</h3>
+                    <button onclick="logoutAdmin()" style="padding: 6px 14px; border-radius: 6px; border: none; background: var(--danger); color: white; cursor: pointer; font-weight: 600;">লগআউট</button>
+                </div>
+
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>তারিখ</th>
+                                <th>নাম</th>
+                                <th>ফোন ও ইমেইল</th>
+                                <th>বিষয়/কোর্স</th>
+                                <th>বার্তা</th>
+                            </tr>
+                        </thead>
+                        <tbody id="messageTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- নোটিফিকেশন টোস্ট -->
+    <div class="toast" id="toast"></div>
+
+    <!-- ফুটার -->
+    <footer>
+        <p>© ২০২৬ জ্ঞানসেতু - সর্বস্বত্ব সংরক্ষিত। সকল কার্যক্রম এই পেজের মধ্যেই সীমাবদ্ধ।</p>
+    </footer>
+
+    <script>
+        // লোকাল স্টোরেজ থেকে ডেটা সংগ্রহ
+        let inquiries = JSON.parse(localStorage.getItem('portal_inquiries_list')) || [];
+
+        // পেজের বাইরে না গিয়ে শুধু সংশ্লিষ্ট সেকশনে স্ক্রোল করা
+        function goToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // টোস্ট বার্তা প্রদর্শন
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.innerText = msg;
+            toast.style.display = 'block';
+            setTimeout(() => { toast.style.display = 'none'; }, 3500);
+        }
+
+        // কোর্স থেকে যোগাযোগ ফর্মে ডেটা পাঠানো
+        function inquireCourse(courseName) {
+            document.getElementById('cSubject').value = courseName;
+            goToSection('contact');
+            document.getElementById('cName').focus();
+            showToast(`যোগাযোগ ফর্মে '${courseName}' নির্বাচন করা হয়েছে।`);
+        }
+
+        // কুইক চিপ সিলেক্টর
+        function selectChip(el, value) {
+            document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+            el.classList.add('active');
+            document.getElementById('cSubject').value = value;
+        }
+
+        // অক্ষর গণনা
+        function updateCharCount() {
+            const text = document.getElementById('cMessage').value;
+            const bnDigits = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+            const countStr = text.length.toString().split('').map(d => bnDigits[d] || d).join('');
+            document.getElementById('charCount').innerText = countStr;
+        }
+
+        // ফর্ম সাবমিশন
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> পাঠানো হচ্ছে...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                const newMsg = {
+                    date: new Date().toLocaleDateString('bn-BD'),
+                    name: document.getElementById('cName').value,
+                    phone: document.getElementById('cPhone').value,
+                    email: document.getElementById('cEmail').value,
+                    subject: document.getElementById('cSubject').value,
+                    message: document.getElementById('cMessage').value
+                };
+
+                inquiries.push(newMsg);
+                localStorage.setItem('portal_inquiries_list', JSON.stringify(inquiries));
+
+                showToast('ধন্যবাদ! আপনার বার্তাটি সফলভাবে পাঠানো হয়েছে।');
+                document.getElementById('contactMainForm').reset();
+                updateCharCount();
+                btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> বার্তা পাঠান';
+                btn.disabled = false;
+            }, 600);
+        }
+
+        // এডমিন মডাল হ্যান্ডলার
+        function openAdminModal() {
+            document.getElementById('adminModal').style.display = 'flex';
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModal').style.display = 'none';
+        }
+
+        function loginAdmin() {
+            const pass = document.getElementById('adminPass').value;
+            if (pass === '123456' || pass === '') {
+                document.getElementById('adminLoginArea').style.display = 'none';
+                document.getElementById('adminDataArea').style.display = 'block';
+                renderAdminData();
+            } else {
+                alert('ভুল পাসওয়ার্ড! সঠিক পাসওয়ার্ড: 123456');
+            }
+        }
+
+        function logoutAdmin() {
+            document.getElementById('adminLoginArea').style.display = 'block';
+            document.getElementById('adminDataArea').style.display = 'none';
+            document.getElementById('adminPass').value = '';
+        }
+
+        function renderAdminData() {
+            document.getElementById('msgCount').innerText = inquiries.length;
+            const tbody = document.getElementById('messageTableBody');
+            tbody.innerHTML = inquiries.length === 0 ? '<tr><td colspan="5" style="text-align:center;">কোনো বার্তা জমা পড়েনি</td></tr>' : '';
+
+            inquiries.forEach(item => {
+                tbody.innerHTML += `<tr>
+                    <td>${item.date}</td>
+                    <td><strong>${item.name}</strong></td>
+                    <td>${item.phone}<br><small style="color:#64748b;">${item.email}</small></td>
+                    <td><span style="background:#e0f2fe; color:#0369a1; padding:2px 8px; border-radius:4px; font-size:0.85rem;">${item.subject}</span></td>
+                    <td>${item.message}</td>
+                </tr>`;
+            });
+        }
+
+        // মডালের বাইরে ক্লিক করলে বন্ধ হবে
+        window.onclick = function(e) {
+            const modal = document.getElementById('adminModal');
+            if (e.target === modal) closeAdminModal();
+        };
+    </script>
+</body>
+</html>
